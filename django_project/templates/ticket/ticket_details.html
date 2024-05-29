@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card mx-auto" style="width:40 rem;">
+        <div class="card-body">
+          <h5 class="card-title mb-3"><b>Ticket Title :</b> {{ ticket.title }}</h5>
+          <p>
+            <small><b>Ticket Number :</b>{{ ticket.ticket_number }}</small>
+          </p>
+          <p class="card-text">
+            <b>Ticket Description:</b>{{ ticket.description }}
+          </p>
+
+          <div class="row">
+            <div class="col">
+              <b>Date created:</b>{{  ticket.date_created|date:"d M Y H:i:s" }}
+            </div>
+            <div class="col">
+              <b>Assigned to:</b> {{ ticket.assigned_to }}
+            </div>
+          </div>
+
+          <br />
+
+          <div class="row">
+            <div class="col">
+              {% if ticket.is_resolved %}
+                <b>Resolved yet?</b><span class="badge bg-danger">Yes Resolve</span>
+              {% else %}
+                <b>Resolved ?</b><span class="badge bg-success">Not yet</span>
+              {% endif %}
+            </div>
+            <div class="col">
+              <b>Accepted Date :</b><small>{{ ticket.accepted_date }}</small>
+            </div>
+          </div>
+          <br />
+          <div class="row">
+            <div class="col">
+              <b>Created By:</b><small>{{ ticket.created_by }}</small>
+            </div>
+            <div class="col">
+              <b>Ticket Status :</b><small>{{ ticket.ticket_status }}</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<a href="{% url 'confirm-resolution' ticket.pk %}">Confirm Resolution</a>
+  <div class="col-md-6">
+    <div class="card mx-auto" style="width:40 rem;">
+      <div class="card-body">
+        <h5 class="card-title mb-3">All Tickets Created By {{ ticket.created_by }}</h5>
+        {% for ticket in tickets_per_user %}
+        <p class="card-text">{{ticket.ticket_number}}<a href="{% url 'ticket_details' ticket.pk %}">(view)</a></p>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+<br>
+{% if request.user.is_engineer %}
+  <a href="#" class="btn btn-danger">Confirm Resolution</a>
+{% endif %}
+
+{% if request.user.is_engineer %}
+  <a href="{% url 'update-ticket' ticket.pk %}" class="btn btn-primary">Update Ticket </a>
+{% endif %}
+
+{% endblock %}

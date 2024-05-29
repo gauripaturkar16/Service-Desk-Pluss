@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+<div class= "row">
+  <div class="col-md-6">
+  <div class="card mx-auto" style="width:40 rem;">
+    <div class="card-body">
+      
+      <center>
+        <h5 class="card-title mb-3"> Update Ticket</h5>
+        <form method ='POST'>
+          {% csrf_token %}
+       
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label" >Issue Title</label>&nbsp;&nbsp;&nbsp;
+            {% render_field form.title class="form-control" %}
+          </div>
+          <br>
+          <br>
+ 
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label" >Description</label>&nbsp;&nbsp;
+            {% render_field form.title class="form-control" %}
+          </div>
+    
+    <button type="submit" class="btn btn-primary">Submit</a></button>
+        </form>
+      </center>
+      
+      </div>
+  <div class="image2">
+    <img  src="{% static 'images\d.jpg' %}" alt="noimage">
+  </div>
+  </div>
+  </div>
+</div>
+{% endblock content %}

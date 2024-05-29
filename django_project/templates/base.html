@@ -1,0 +1,261 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+       
+        <title>SDPLUS</title>
+        <style>
+            body{
+                padding-top: 20px;
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+               
+    background: linear-gradient(to bottom, #33ccff 0%, #ff9966 100%);
+            }
+            .container-fluid font{
+                margin-right: 20px;
+                margin-top: 20px;
+                background: -webkit-linear-gradient(180deg, blue, violet);
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+            }
+            .container-fluid
+            {
+                width: 100%;
+                display: inline-flex;
+                border-bottom: 2px solid #000080;
+                padding-bottom: 10px;
+                margin-bottom: 10px;                
+            }
+            .image{
+                width: 100px;
+                height: 100px;
+                border-radius: 50%;
+              }
+            
+            body{
+                background: powderblue;
+            }
+            
+            .yedi{
+                display: inline-flex;
+                position: relative;
+               
+                margin-left: 370px;
+                
+                
+            }
+            .yedi1{
+                display: inline-flex;
+                position: relative;
+               
+                margin-left: 500px;
+                
+                
+            }
+            .yedi ul,li{
+                display: inline-flex;
+                
+            }
+            .nav-link ,a{
+                background: linear-gradient(to bottom right, #ff33cc 28%, #ccff33 100%);
+                color: white;
+                padding: 16px;
+                margin: 10px;
+                margin-top: 0;
+                border-radius: 20px;
+                font-size: 20px;
+                border: none;
+                cursor: pointer;
+                margin-bottom: 0;
+                
+            }
+            .nav-link:hover{
+                background: linear-gradient(to bottom, #6699ff 35%, #99ff33 100%);
+                
+            }
+            
+            
+            .nav-item{
+                position: relative;
+                display: inline-block;
+                
+                
+            }
+            a{
+                text-decoration: none;
+                font-size: 20px;
+            }
+            .card{
+                display: flex;
+                position: relative;
+            }
+            .card-body{
+                border: 2px solid;
+                width: 600px;
+                height: 400px;
+                padding: 20px;
+                position: relative;
+               margin-left: 100px;
+                margin-top: 130px;
+            }
+            
+            .image2 img{
+               margin: 80px;
+                height: 400px;
+                width: 600px;
+                margin-top: 130px;
+                box-shadow: 10px 10px 5px gray;
+            }
+            .btn{
+                
+                    font-size: 20px;
+                    border-radius: 20px;
+                    padding: 10px;
+                    width: 80px;
+                margin-top: 20px;
+                
+            }
+            .mb-3{
+                font-size: 20px;
+                
+            }
+           .card-body1{
+            border: 2px solid;
+            width: 1000px;
+            height: 400px;
+            padding: 10px;
+            position: relative;
+           margin-left: 200px;
+            margin-top: 130px;
+            font-size: 18px;
+           }
+           .badge{
+            margin: 10px;
+            
+           }
+           .card-body1 th,td{
+            padding: 20px;
+           }
+        </style>
+    </head>
+    <body >
+        {% if request.user.is_customer %}
+        
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="gauri">
+            <div class="container-fluid">
+                <font color="#400080" size=6 > Service Desk Plus</font>
+                <img class="image" src="{% static 'images\f.jpg' %}" alt="noimage">
+              
+                
+            
+                <div class="collapse navbar-collapse  " id="navbaarSupportedContent">
+                    <div class="yedi">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            
+                            <li class="nav-item ">
+                                <a class="nav-link active" aria-current="page" href="/" >Home</a>
+                            </li>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <li class="nav-item">
+                                <a class="nav-link " href="{% url 'create-ticket' %}">Create Ticket</a>
+                            </li>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <li class="nav-item">
+                                <a class="nav-link " href="{% url 'all-tickets' %}">View Ticket</a>
+                            </li>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            {% comment %} <li class="nav-item">
+                                <a class="nav-link disabled" href="a" tabindex="-1" aria-disabled="true">{{request.user.username}}</a>
+                            </li> {% endcomment %}
+                            <li class="nav-item" id="logout">
+                                <a href="{%  url 'logout' %}" class="btn btn-primary me-2"> Logout</a>
+                            </li>
+                        </ul>   
+                    </div>
+                </div>  
+            </div>
+        </nav>
+
+    {% elif request.user.is_engineer%}
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+        
+            <font color="#400080" size=5 > Service Desk Plus</font>
+            <img class="image" src="{% static 'images\f.jpg' %}" alt="noimage">
+            {% comment %} <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="navbaarSupportedContent" aria-controls="navSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation"> {% endcomment %}
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbaarSupportedContent">
+          
+            <div class="yedi1">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            
+                    <li class="nav-item ">
+                        <a class="nav-link active" aria-current="page" href="/" >Home</a>
+                    </li>
+                    
+ 
+                     <li class="nav-item">
+                     <a class="nav-link active" href="{% url 'ticket-queue'%}">Ticket Queue</a>
+                     </li>
+                     
+ 
+                     <li class="nav-item">
+                         <a class="nav-link active" href="{% url 'workspace'%}">WorkSpace</a>
+                         </li>
+                         
+ 
+                 {% comment %} <li class="nav-item dropdown">
+                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                         data-bs-toggle="dropdown" aria-expanded="false"> Manage Tickets</a>
+                         
+ 
+                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                         <li><a class="dropdown-item" href="{% url 'all-closed-tickets' %}">Close Tickets</a></li>
+                     </ul> {% endcomment %}
+ 
+                 </li>
+                   {% comment %} <li class="nav-item">
+                     <a class="nav-link disabled" href="a" tabindex="-1" aria-disabled="true">{{request.user.username}}</a>
+                   </li> {% endcomment %}
+                   <li class="nav-item">
+                 <a href="{%  url 'logout' %}" class="btn btn-primary me-2"> Logout</a>
+             </li>
+            </div>
+            </div>
+        </div>
+    </nav>
+
+    {% endif %}
+    
+
+        <div class="container mt-5">
+        {% if messages%}
+        {% for message in messages %}
+
+        <div class="alert alert-{{message.tags}} mx-auto" 
+        style="width: 40rem;"
+        role="alert">
+                <b>{{message}}<b>
+        </div>
+
+        {% endfor %}
+        {% endif %}
+
+        {%block content%}
+        {% endblock content%}
+    </div>
+
+
+        </section>
+
+
+    </body>
+</html>

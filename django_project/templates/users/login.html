@@ -1,0 +1,169 @@
+{% extends 'users/base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+.card-body{
+    margin-top: 0px;
+    height: 400px;
+    width: 400px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background: #ffcee7;
+   
+    backdrop-filter: blur(10px);
+    padding: 50px;
+    z-index: 30;
+    position: absolute;
+    margin-left: 100px;
+}
+body{
+    background: linear-gradient(to bottom right, #33ccff 0%, #ff99cc 100%);
+}
+
+.card{ 
+    display:flex;
+    margin-top: 30px;
+    padding-left: 100px;
+    margin-bottom: 100px;
+}
+.image1{
+    z-index: -1;
+        width: 500px;
+        height:500px;
+        
+      margin-left: 600px;
+      
+}
+.form-label{
+    font-size: 22px;
+    margin: 20px;
+}
+.mb-5{
+    margin-top:70px ;
+}
+h1 {
+    font-size: 40px;
+    background: -webkit-linear-gradient(180deg, red, yellow);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+.form-control{
+    padding: 3px;
+    border-radius: 20px;
+}
+#submitbtn{
+    font-size: 20px;
+    border: 2px solid beige;
+    border-radius: 20px;
+    padding: 10px;
+    color: beige;
+    width: 200px;
+    margin-top: 50px;
+    background: linear-gradient(to bottom right, #33ccff 0%, #ff99cc 100%);
+    
+}
+
+</style>
+<div class="card mx-auto" style="width: 40rem;">
+    
+    <div class="card-body">
+        <center>
+        
+        <h1 class="card-title mb-3"> Login Here !</h1>
+        
+        <form method="POST">
+            
+            {% csrf_token %}
+            <div class="mb-5">
+                {% comment %} <img src="a.jpg" alt=""> {% endcomment %}
+                <label for="exampleInputEmail1" class="form-label">Username :</label>
+                <input type="input" name="username" class="form-control" id="exampleInputEmail1">
+                <br>
+                <br>
+                <label for="exampleInputPassword1" class="form-label">Password :</label>
+                <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+                <br>
+                <br>
+                <button class="btn btn-primary" id="submitbtn">Login</button>
+    
+            </div>
+           
+        </form>
+    </center>
+    </div>
+    <img class="image1" src="{% static 'images\g.jpg' %}" alt="noimage">
+
+</div>
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+
+
+
+{% comment %} <!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>YOU ARE SIGNING-UP</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        
+    </head>
+    <style>
+        body{
+            background-color: powderblue;
+        }
+    </style>
+    <body>
+        <h3> SIGN UP </h3>
+    
+        <form action="/login" method="POST">
+
+            {% csrf_token %}
+
+            <label for=""> Username</label>
+            <input type="text" id="username" name="username" placeholder="only letters and numbers" Required>
+            <br>
+            <br>
+            <br>
+
+            <label for=""> Name</label>
+            <input type="text" id="name" name="name" placeholder="enter your name" Required>
+            <br>
+            <br>
+            <br>
+           
+            <label for=""> Email Address</label>
+            <input type="email" id="email" name="email" placeholder="enter your email" Required>
+            <br>
+            <br>
+            <br>
+            <label for=""> Password</label>
+            <input type="password" id="pass1" name="pass1" placeholder="create a password" Required>
+            <br>
+            <br>
+            <br>
+            <label for=""> Confirm your Password</label>
+            <input type="password" id="pass2" name="pass2" placeholder="confirm your password" Required>
+            <br>
+            <br>
+            <br>
+
+            <button type="submit" href="users/base.html">Sign Up</button>
+
+
+        </form>
+        
+        <script src="" async defer></script>
+    </body>
+</html> {% endcomment %}

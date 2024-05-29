@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="card mx-auto" style="width: 76rem">
+    <div class="card-body1">
+        <h5 class="card-title mb-3"> &nbsp;&nbsp;&nbsp;All Tickets</h5>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Ticket ID</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Created On</th>
+                    <th scope="col">&nbsp;&nbsp;&nbsp;Assigned To</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Action</th>
+
+
+                </tr>
+            </thead>
+            <tbody>
+             
+
+
+                {% for ticket in tickets %}
+                <tr>
+                    <td><span class="badge"><small>{{ticket.tickets_number}} </small></span></td>
+                    <td><span class="badge"><small>{{ticket.title}}</small>         </span></td>
+                    <td><span class="badge"><small>{{ ticket.date_created|date:"d M Y H:i:s"}}</small>  </span> </td>
+                {% if ticket.assigned_to %}
+
+                    <td><span class="badge"><small>{{ticket.assigned_to}}</small></span></td>
+
+                {% else %}
+                <td><span class="badge"><small>Not Assigned</small></span></td>
+                {% endif %}
+
+               {% if ticket.ticket_status == 'Active' %}
+               <td><span class="badge bg-success">Active</span></td>
+
+               {% elif ticket.ticket_status == 'Pending' %}
+               <td><span class="badge bg-warning">Pending</span></td>
+
+               {% elif ticket.ticket_status == 'Completed' %}
+               <td><span class="badge bg-danger">Completed</span></td>
+
+               {% endif %}
+               <td><span class="badge"><small><a href="{%url 'ticket_details' ticket.pk %}">View Details</a></small></span></td>
+
+                </tr>
+                {% endfor %}
+
+                
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+{% endblock content %}
