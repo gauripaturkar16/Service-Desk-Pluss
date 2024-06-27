@@ -57,4 +57,4 @@ License
 This project is licensed under the MIT License.
 
 Contact
-For any inquiries or feedback, please contact [Your Name] at [your.email@example.com].
+For any inquiries or feedback, please contact "Gauri" at gauripaturkar16@gmail.com .
